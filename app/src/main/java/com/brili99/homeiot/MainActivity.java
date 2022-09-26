@@ -8,6 +8,9 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
     WebView webView;
     @Override
@@ -26,7 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("http://192.168.1.100");
+
+        Map<String, String> extraHeaders = new HashMap<String, String>();
+        extraHeaders.put("fromAndroidApp", "yes");
+        webView.loadUrl("http://192.168.1.100", extraHeaders);
     }
 
     @Override
